@@ -3,6 +3,7 @@ package Model;
 
 import Service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 
 public class User {
     private static long Id;
@@ -26,6 +27,7 @@ public class User {
         return id;
     }
     public static String setName(String name){
+        setName(name);
         return name;
     }
     public static String getName() {

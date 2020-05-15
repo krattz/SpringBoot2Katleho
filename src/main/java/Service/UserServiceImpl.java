@@ -4,6 +4,7 @@ import Dao.FakeRepoInterface;
 import Dao.FakeRepo;
 import Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
@@ -28,12 +29,24 @@ public class  UserServiceImpl implements FakeRepoInterface {
     public void removeUser(long Id) {
         deleteUser(findUserById(Id));
     }
+
 @Autowired
+@Cacheable("name")
     public String getUser(long Id) {
-        if(FakeRepo.DB.contains(findUserById(Id))){
+//        if(FakeRepo.DB.contains(findUserById(Id))){
 //            System.out.println("Hello" + FakeRepo.DB.get((int) Id));
-        }
-        return "Hello "+ FakeRepo.DB.get((int)Id);
+//        }
+    try
+    {
+        System.out.println("Going to sleep for 5 Secs.. to simulate backend call.");
+        Thread.sleep(1000*5);
+    }
+    catch (InterruptedException e)
+    {
+        e.printStackTrace();
+    }
+
+    return "Hello "+ FakeRepo.DB.get((int)Id);
     }
     @Override
     public String insertUser(long id, String name, String surname) {
