@@ -9,7 +9,6 @@ public class User {
     private static long Id;
         private static String name;
         private static String surname;
-        private UserServiceImpl userImpl;
 
     public User(long id, String name, String surname) {
 

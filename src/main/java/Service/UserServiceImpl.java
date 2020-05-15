@@ -33,9 +33,9 @@ public class  UserServiceImpl implements FakeRepoInterface {
 @Autowired
 @Cacheable("name")
     public String getUser(long Id) {
-//        if(FakeRepo.DB.contains(findUserById(Id))){
-//            System.out.println("Hello" + FakeRepo.DB.get((int) Id));
-//        }
+        if(FakeRepo.DB.contains(findUserById(Id))){
+            System.out.println("Hello" + FakeRepo.DB.get((int) Id));
+        }
     try
     {
         System.out.println("Going to sleep for 5 Secs.. to simulate backend call.");
