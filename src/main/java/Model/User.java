@@ -26,14 +26,13 @@ public class User {
         return id;
     }
     public static String setName(String name){
-        setName(name);
         return name;
     }
     public static String getName() {
         setName(name);
         return name;
     }
-    @Autowired
+
     public static String getSurname() {
         setSurname(surname);
         return surname;

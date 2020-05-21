@@ -13,29 +13,19 @@ import java.util.List;
 @Service
 public class  UserServiceImpl implements FakeRepoInterface {
 
-    @Autowired
-    public LinkedList<Dao.FakeRepo> getList() {
-        return getList();
-    }
-
-    @Autowired
-    LinkedList<FakeRepo>list = new LinkedList();
-
     public String addUser(long Id , String name, String surname){
         insertUser(Id,name,surname);
-      return  User.getId() + User.getName() + User.getSurname();
+        return   name+ " entered";
     }
 
     public void removeUser(long Id) {
-        deleteUser(findUserById(Id));
+        deleteUser(Id);
     }
 
 @Autowired
 @Cacheable("name")
     public String getUser(long Id) {
-        if(FakeRepo.DB.contains(findUserById(Id))){
-            System.out.println("Hello" + FakeRepo.DB.get((int) Id));
-        }
+
     try
     {
         System.out.println("Going to sleep for 5 Secs.. to simulate backend call.");
@@ -45,29 +35,24 @@ public class  UserServiceImpl implements FakeRepoInterface {
     {
         e.printStackTrace();
     }
-
-    return "Hello "+ FakeRepo.DB.get((int)Id);
+    return "Hello " +FakeRepo.DB.get((int)Id).getName();
     }
+
     @Override
     public String insertUser(long id, String name, String surname) {
-    return id+name+surname;
+        FakeRepo.DB.put(1l, new User(id, name, surname));
+        return id+" "+name+" "+surname;
     }
     @Override
-    public long findUserById(long id) {
-        return 0;
+    public User findUserById(long id) {
+        return FakeRepo.DB.get(id);
     }
 
     @Override
     public void deleteUser(long id) {
-        if(FakeRepo.DB.contains(findUserById(id))){
+        if(FakeRepo.DB.containsKey(findUserById(id))){
             removeUser(id);
         }
         System.out.println(findUserById(id) + " removed");
-    }
-
-    @Autowired
-    public List<User> selectUser() {
-        System.out.println("trying");
-        return FakeRepo.DB;
     }
 }
