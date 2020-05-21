@@ -24,8 +24,7 @@ public class  UserServiceImpl implements FakeRepoInterface {
 
 @Autowired
 @Cacheable("name")
-    public String getUser(long Id) {
-
+public String getUser(long Id) {
     try
     {
         System.out.println("Going to sleep for 5 Secs.. to simulate backend call.");
@@ -35,8 +34,8 @@ public class  UserServiceImpl implements FakeRepoInterface {
     {
         e.printStackTrace();
     }
-    return "Hello " +FakeRepo.DB.get((int)Id).getName();
-    }
+    return "Hello " +FakeRepo.DB.get(Id).getName();
+}
 
     @Override
     public String insertUser(long id, String name, String surname) {

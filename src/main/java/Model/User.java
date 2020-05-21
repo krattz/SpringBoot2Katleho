@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 
 public class User {
-    private static long Id;
-        private static String name;
-        private static String surname;
+    private long Id;
+        private String name;
+        private String surname;
 
     public User(long id, String name, String surname) {
 
@@ -18,26 +18,27 @@ public class User {
 
     }
 
-    public static long getId() {
+    public long getId() {
         return Id;
     }
     public long setId(long id) {
         Id = id;
         return id;
     }
-    public static String setName(String name){
+    public String setName(String name){
         return name;
     }
-    public static String getName() {
+
+    public String getName() {
         setName(name);
         return name;
     }
 
-    public static String getSurname() {
+    public String getSurname() {
         setSurname(surname);
         return surname;
     }
-    public static String setSurname(String surname) {
+    public String setSurname(String surname) {
     return surname;
     }
 }

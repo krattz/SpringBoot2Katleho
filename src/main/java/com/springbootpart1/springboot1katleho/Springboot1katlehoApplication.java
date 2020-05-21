@@ -15,6 +15,7 @@ public class Springboot1katlehoApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		UserServiceImpl usr = new UserServiceImpl();
-		usr.getUser(0);
+
+		System.out.println(usr.getUser(1));
 	}
 }
